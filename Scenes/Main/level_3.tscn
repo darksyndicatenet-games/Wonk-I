@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://brottnte1bufu"]
+
+[ext_resource type="Texture2D" uid="uid://deyaoq2aynoni" path="res://Assets/Backgrounds/level3/Untitled7_20250810145316.png" id="1_r4pqp"]
+[ext_resource type="Texture2D" uid="uid://cmvric5oa08bn" path="res://Assets/Backgrounds/level3/Untitled7_20250810145438.png" id="2_ij1rc"]
+[ext_resource type="Texture2D" uid="uid://dxb6gvxhbme5l" path="res://Assets/Backgrounds/level3/Untitled7_20250810145444.png" id="3_28a6p"]
+[ext_resource type="Texture2D" uid="uid://cmx62pbagecy" path="res://Assets/Backgrounds/level3/Untitled7_20250810145500.png" id="4_c2cvl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r4pqp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ij1rc"]
+size = Vector2(7696, 140)
+
+[node name="Level3" type="Node2D"]
+
+[node name="forth_layer" type="Parallax2D" parent="."]
+z_index = -4
+texture_filter = 1
+scroll_offset = Vector2(-224, -1404)
+repeat_size = Vector2(160, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="forth_layer"]
+position = Vector2(1182, 719.5)
+scale = Vector2(1.5, 2.0430555)
+texture = ExtResource("1_r4pqp")
+
+[node name="third_layer" type="Parallax2D" parent="."]
+z_index = -3
+texture_filter = 1
+scroll_offset = Vector2(-24, -1382)
+repeat_size = Vector2(160, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="third_layer"]
+position = Vector2(1319.5001, 739)
+scale = Vector2(1.2779168, 1.9111111)
+texture = ExtResource("2_ij1rc")
+
+[node name="second_layer" type="Parallax2D" parent="."]
+z_index = -2
+texture_filter = 1
+scroll_offset = Vector2(-257, -1715)
+repeat_size = Vector2(1700, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="second_layer"]
+position = Vector2(1284, 1144)
+scale = Vector2(1.3829167, 1.475)
+texture = ExtResource("3_28a6p")
+
+[node name="first_layer" type="Parallax2D" parent="."]
+z_index = -3
+texture_filter = 1
+scroll_offset = Vector2(-123, -1595)
+repeat_size = Vector2(1600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="first_layer"]
+position = Vector2(1152.9999, 1075)
+scale = Vector2(1.5679168, 1.6680554)
+texture = ExtResource("4_c2cvl")
+
+[node name="PlayerSpawnsHere" type="Marker2D" parent="."]
+position = Vector2(-489, -276)
+
+[node name="Floor" type="Node2D" parent="."]
+position = Vector2(-133, -1401)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor"]
+position = Vector2(-442, -219)
+physics_material_override = SubResource("PhysicsMaterial_r4pqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
+position = Vector2(3708, 1513)
+shape = SubResource("RectangleShape2D_ij1rc")

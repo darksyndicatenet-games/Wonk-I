@@ -1,39 +1,95 @@
-[gd_scene load_steps=6 format=3 uid="uid://7k0qn7sfl0jq"]
+[gd_scene load_steps=11 format=3 uid="uid://7k0qn7sfl0jq"]
 
 [ext_resource type="Texture2D" uid="uid://ui5c5uxntq30" path="res://Assets/Backgrounds/bgs/Layer 1.png" id="1_1r6ip"]
+[ext_resource type="Script" uid="uid://dd7cwbeo0xian" path="res://Scenes/Main/main.gd" id="1_p6jpk"]
 [ext_resource type="PackedScene" uid="uid://caty8861gjfkc" path="res://Scenes/Player/player.tscn" id="2_lixft"]
+[ext_resource type="Texture2D" uid="uid://blxxvj8lhwr2u" path="res://Assets/Backgrounds/bgs/Layer 2_1.png" id="3_2a143"]
 [ext_resource type="Texture2D" uid="uid://cksnlstdbi3yj" path="res://Assets/Enemy/Clock_enemy.png" id="3_qw60k"]
+[ext_resource type="PackedScene" uid="uid://dfi6xorndffm2" path="res://Scenes/Enemy/enemy.tscn" id="4_5yls4"]
+[ext_resource type="Texture2D" uid="uid://duhyllavu317b" path="res://Assets/Backgrounds/bgs/Layer 2_2.png" id="4_xlvfx"]
+[ext_resource type="Texture2D" uid="uid://blwwuedlr0n12" path="res://Assets/Backgrounds/bgs/Layer 3.png" id="5_y3v7k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lixft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qw60k"]
-size = Vector2(7685.25, 244)
+size = Vector2(7696, 140)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_p6jpk")
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
+[node name="forth_layer" type="Parallax2D" parent="."]
+z_index = -4
 texture_filter = 1
-scroll_scale = Vector2(0.2, 0.2)
+scroll_offset = Vector2(-224, -1404)
 repeat_size = Vector2(160, 0)
+metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
-position = Vector2(1235, 755.99994)
-scale = Vector2(1.1379832, 2.1572833)
+[node name="Sprite2D" type="Sprite2D" parent="forth_layer"]
+position = Vector2(1182, 719.5)
+scale = Vector2(1.5, 2.0430555)
 texture = ExtResource("1_1r6ip")
 
+[node name="third_layer" type="Parallax2D" parent="."]
+z_index = -3
+texture_filter = 1
+scroll_offset = Vector2(-24, -1382)
+repeat_size = Vector2(160, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="third_layer"]
+position = Vector2(1319.5001, 739)
+scale = Vector2(1.2779168, 1.9111111)
+texture = ExtResource("3_2a143")
+
+[node name="second_layer" type="Parallax2D" parent="."]
+z_index = -2
+texture_filter = 1
+scroll_offset = Vector2(-257, -1715)
+repeat_size = Vector2(1700, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="second_layer"]
+position = Vector2(1111.5, 555)
+scale = Vector2(1.3829167, 1.475)
+texture = ExtResource("4_xlvfx")
+
+[node name="first_layer" type="Parallax2D" parent="."]
+z_index = -3
+texture_filter = 1
+scroll_offset = Vector2(-123, -1595)
+repeat_size = Vector2(1600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="first_layer"]
+position = Vector2(1152.9999, 1075)
+scale = Vector2(1.5679168, 1.6680554)
+texture = ExtResource("5_y3v7k")
+
 [node name="Player" parent="." instance=ExtResource("2_lixft")]
-position = Vector2(133, 717)
+position = Vector2(441, -241)
+speed = 300
 
 [node name="Floor" type="Node2D" parent="."]
+position = Vector2(-133, -1401)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Floor"]
-position = Vector2(-4, -497)
+position = Vector2(-442, -219)
 physics_material_override = SubResource("PhysicsMaterial_lixft")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
-position = Vector2(3713.375, 1461)
+position = Vector2(3708, 1513)
 shape = SubResource("RectangleShape2D_qw60k")
 
 [node name="ClockEnemy" type="Sprite2D" parent="."]
-position = Vector2(243, 1020)
+position = Vector2(320.5, -673)
 texture = ExtResource("3_qw60k")
+
+[node name="ClockEnemy2" type="Sprite2D" parent="."]
+position = Vector2(2909.5, -697)
+texture = ExtResource("3_qw60k")
+
+[node name="ClockEnemy3" type="Sprite2D" parent="."]
+position = Vector2(6210.5, -664)
+texture = ExtResource("3_qw60k")
+
+[node name="enemy" parent="." instance=ExtResource("4_5yls4")]
+position = Vector2(1240.5, -716)

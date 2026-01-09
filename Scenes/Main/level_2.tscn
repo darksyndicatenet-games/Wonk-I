@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbu6sagslljc5"]
+
+[ext_resource type="Texture2D" uid="uid://yr6pj7mss4jf" path="res://Assets/Backgrounds/Sea Bg/Sea Bg/1.png" id="1_jadbj"]
+[ext_resource type="Texture2D" uid="uid://x5r5gtfvac6l" path="res://Assets/Backgrounds/Sea Bg/Sea Bg/2.png" id="2_crjqe"]
+[ext_resource type="Texture2D" uid="uid://cjh47wy82c25k" path="res://Assets/Backgrounds/Sea Bg/Sea Bg/3.png" id="3_1bw1f"]
+[ext_resource type="Texture2D" uid="uid://bmqt00vqcj2bm" path="res://Assets/Backgrounds/Sea Bg/Sea Bg/4.png" id="4_dxejl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jadbj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crjqe"]
+size = Vector2(7696, 140)
+
+[node name="Level2" type="Node2D"]
+
+[node name="forth_layer" type="Parallax2D" parent="."]
+z_index = -4
+texture_filter = 1
+scroll_offset = Vector2(-224, -1404)
+repeat_size = Vector2(160, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="forth_layer"]
+position = Vector2(1182, 719.5)
+scale = Vector2(1.5, 2.0430555)
+texture = ExtResource("1_jadbj")
+
+[node name="third_layer" type="Parallax2D" parent="."]
+z_index = -3
+texture_filter = 1
+scroll_offset = Vector2(-24, -1382)
+repeat_size = Vector2(160, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="third_layer"]
+position = Vector2(1319.5001, 739)
+scale = Vector2(1.2779168, 1.9111111)
+texture = ExtResource("2_crjqe")
+
+[node name="second_layer" type="Parallax2D" parent="."]
+z_index = -2
+texture_filter = 1
+scroll_offset = Vector2(-257, -1715)
+repeat_size = Vector2(1700, 0)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="second_layer"]
+position = Vector2(1111.5, 555)
+scale = Vector2(1.3829167, 1.475)
+texture = ExtResource("3_1bw1f")
+
+[node name="first_layer" type="Parallax2D" parent="."]
+z_index = -3
+texture_filter = 1
+scroll_offset = Vector2(-123, -1595)
+repeat_size = Vector2(1600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="first_layer"]
+position = Vector2(1152.9999, 1075)
+scale = Vector2(1.5679168, 1.6680554)
+texture = ExtResource("4_dxejl")
+
+[node name="PlayerSpawnsHere" type="Marker2D" parent="."]
+position = Vector2(-560, -301)
+
+[node name="Floor" type="Node2D" parent="."]
+position = Vector2(-133, -1401)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor"]
+position = Vector2(-442, -219)
+physics_material_override = SubResource("PhysicsMaterial_jadbj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
+position = Vector2(3708, 1513)
+shape = SubResource("RectangleShape2D_crjqe")

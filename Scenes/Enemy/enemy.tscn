@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfi6xorndffm2"]
+[gd_scene load_steps=12 format=3 uid="uid://dfi6xorndffm2"]
 
 [ext_resource type="Texture2D" uid="uid://bx6e2j4ovcmhc" path="res://Assets/Enemy/clock_enemy_fonal.png" id="1_mw074"]
 [ext_resource type="Script" uid="uid://cijdin0n3ef0f" path="res://Scenes/Enemy/enemy.gd" id="1_nvvbs"]
+[ext_resource type="PackedScene" uid="uid://bw3mj8rhmt0ru" path="res://Scenes/Enemy/enemy_bullet.tscn" id="2_2t2r4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mw074"]
 size = Vector2(20.467026, 11.2299)
@@ -49,10 +50,17 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="enemy" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_2t2r4"]
+radius = 173.80736
+
+[node name="enemy" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_nvvbs")
+bullet_scene = ExtResource("2_2t2r4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-3.814897, -7.4999967)
 scale = Vector2(16.33702, 23.953907)
 shape = SubResource("RectangleShape2D_mw074")
@@ -63,10 +71,27 @@ animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.5408791
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="EnemyHealthBar" type="ProgressBar" parent="."]
 offset_left = -117.0
 offset_top = -220.0
 offset_right = 112.0
 offset_bottom = -193.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 value = 100.0
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="ShootPoint" type="Marker2D" parent="."]
+position = Vector2(-84, 29)
+
+[node name="EnemyDamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDamageArea"]
+position = Vector2(1, -5)
+shape = SubResource("CircleShape2D_2t2r4")
+debug_color = Color(0.88777864, 0.2829336, 0.44113433, 0.41960785)
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="body_entered" from="EnemyDamageArea" to="." method="_on_enemy_damage_area_body_entered"]
+[connection signal="body_exited" from="EnemyDamageArea" to="." method="_on_enemy_damage_area_body_exited"]
