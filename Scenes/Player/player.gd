@@ -6,7 +6,7 @@ extends CharacterBody2D
 #ending sceen credits
 @onready var jump_timer: Timer = $JumpTimer
 @onready var player_animation: AnimatedSprite2D = $PlayerAnimation
-
+#test
 var player_is_jumping: bool = false
 
 @export var speed := 250
