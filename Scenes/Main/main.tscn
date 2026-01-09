@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://7k0qn7sfl0jq"]
+[gd_scene load_steps=6 format=3 uid="uid://7k0qn7sfl0jq"]
 
 [ext_resource type="Texture2D" uid="uid://ui5c5uxntq30" path="res://Assets/Backgrounds/bgs/Layer 1.png" id="1_1r6ip"]
 [ext_resource type="PackedScene" uid="uid://caty8861gjfkc" path="res://Scenes/Player/player.tscn" id="2_lixft"]
+[ext_resource type="Texture2D" uid="uid://cksnlstdbi3yj" path="res://Assets/Enemy/Clock_enemy.png" id="3_qw60k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lixft"]
 
@@ -32,3 +33,7 @@ physics_material_override = SubResource("PhysicsMaterial_lixft")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/StaticBody2D"]
 position = Vector2(3713.375, 1461)
 shape = SubResource("RectangleShape2D_qw60k")
+
+[node name="ClockEnemy" type="Sprite2D" parent="."]
+position = Vector2(243, 1020)
+texture = ExtResource("3_qw60k")

@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://dfi6xorndffm2"]
+
+[ext_resource type="Texture2D" uid="uid://bx6e2j4ovcmhc" path="res://Assets/Enemy/clock_enemy_fonal.png" id="1_mw074"]
+[ext_resource type="Script" uid="uid://cijdin0n3ef0f" path="res://Scenes/Enemy/enemy.gd" id="1_nvvbs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mw074"]
+size = Vector2(20.467026, 11.2299)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvvbs"]
+atlas = ExtResource("1_mw074")
+region = Rect2(0, 0, 573, 523)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t2r4"]
+atlas = ExtResource("1_mw074")
+region = Rect2(573, 0, 573, 523)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmwl5"]
+atlas = ExtResource("1_mw074")
+region = Rect2(1146, 0, 573, 523)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d40jh"]
+atlas = ExtResource("1_mw074")
+region = Rect2(1719, 0, 573, 523)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx76c"]
+atlas = ExtResource("1_mw074")
+region = Rect2(2292, 0, 573, 523)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pqgp3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvvbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t2r4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmwl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d40jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx76c")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_nvvbs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.814897, -7.4999967)
+scale = Vector2(16.33702, 23.953907)
+shape = SubResource("RectangleShape2D_mw074")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pqgp3")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.5408791
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -117.0
+offset_top = -220.0
+offset_right = 112.0
+offset_bottom = -193.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+value = 100.0
